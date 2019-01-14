@@ -13,7 +13,7 @@ args = parser.parse_args()
 keyvalue = dict()
 
 storage_path = os.path.join(tempfile.gettempdir(), 'storage.data')
-if os.stat(storage_path).st_size > 0:
+if os.path.exists(storage_path):
     with open(storage_path, 'r') as f:
         keyvalue = json.load(f)
 
