@@ -28,6 +28,6 @@ else:
     with open(storage_path, 'w') as f:
         json.dump(keyvalue, f)
 
-f.close()
+
 
 
