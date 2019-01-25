@@ -15,10 +15,3 @@ class Account:
 
     def __init__(self, commission):
         self.commission = commission
-
-if __name__ == "__main__":
-    new_account = Account(0.2)
-
-    new_account.amount = 75
-
-    print(new_account.amount)
