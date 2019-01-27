@@ -3,6 +3,9 @@ import requests
 
 
 def main(site_url, substring):
+    import pdb
+    pdb.set_trace()
+
     site_code = get_site_code(site_url)
     matching_substrings = get_matching_substrings(site_code, substring)
     print('"{}" found {} times in {}'.format(substring, len(matching_substrings), site_url))
