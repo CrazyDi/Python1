@@ -43,21 +43,7 @@ class File:
     def __str__(self):
         return self.path
 
-if __name__ == "__main__":
-    first = File(sys.argv[1])
-    first.write('111\n')
-    first.write('222\n')
-    first.write('333\n')
-    print(first)
 
-    second = File(sys.argv[2])
-    second.write('444\n')
-    second.write('555\n')
-    second.write('666\n')
-    print(second)
-
-    result = first + second
-    print(result)
 
 
 
