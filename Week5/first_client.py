@@ -8,5 +8,7 @@ if __name__ == "__main__":
         s.connect((HOST, POST))
         s.sendall(b'Hello world')
         data = s.recv(1024)
-
-    print('Received', repr(data))
+        print('Received', repr(data))
+        s.sendall(b'Hello Kate')
+        data = s.recv(1024)
+        print('Received', repr(data))
