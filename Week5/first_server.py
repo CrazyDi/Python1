@@ -14,6 +14,7 @@ if __name__ == "__main__":
 
             while True:
                 data = conn.recv(1024)
+                print(data)
                 if not data:
                     break
                 conn.sendall(data)
