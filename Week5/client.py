@@ -28,10 +28,11 @@ class Client:
     def get(self, metric_name):
         """возвращает значения"""
         with socket.create_connection((self.host, self.port), timeout=self.timeout) as sock:
-            sock.send(metric_name.encode("utf8"))
+            send_str = 'get ' + metric_name + '\n'
+            sock.send(send_str.encode("utf8"))
             data = sock.recv(1024).decode("utf8")
             data_list = data.split('\n')
-            if list[0] != "ok":
+            if data_list[0] != "ok":
                 raise ClientError
 
             data_list = data_list[1:]
