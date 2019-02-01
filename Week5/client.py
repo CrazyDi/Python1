@@ -27,4 +27,30 @@ class Client:
 
     def get(self, metric_name):
         """возвращает значения"""
-        pass
+        with socket.create_connection((self.host, self.port), timeout=self.timeout) as sock:
+            sock.send(metric_name.encode("utf8"))
+            data = sock.recv(1024).decode("utf8")
+            data_list = data.split('\n')
+            if list[0] != "ok":
+                raise ClientError
+
+            data_list = data_list[1:]
+            result = {}
+            for s in data_list:
+                if s != '':
+                    s_list = s.split()
+
+                    metric_name = s_list[0]
+                    metric_value = float(s_list[1])
+                    timestamp = int(s_list[2])
+                    if metric_name in result:
+                        metric_list = result[metric_name]
+                        metric_list.append((timestamp, metric_value))
+                        metric_list.sort()
+                    else:
+                        metric_list = [(timestamp, metric_value)]
+
+                    result[metric_name] = metric_list
+
+            return result
+
